@@ -1,59 +1,60 @@
-
 # Bash Go Project Structure
 
-This repository contains Bash scripts to automate the creation of various Go project structures, including clean architecture, MVC, monolith, hexagonal, microservices, and CQRS architectures.
+This repository contains Bash scripts to automate the creation of various Go project structures. You can quickly generate project structures like Clean Architecture, MVC, Monolith, Hexagonal, Microservices, and CQRS with ease, ensuring consistency and reducing the manual effort involved in setup.
 
 ## How to Use Directly from the Remote Repository
 
-You can use the script directly from this repository without cloning it first. Follow the steps below:
+You can execute the script directly from this repository without needing to clone it. Follow these steps:
 
 1. Open your terminal and navigate to the directory where you want to create your Go project.
-
-2. Run the following command, replacing `your-project-name` with the desired name of your project and selecting the desired architecture by number:
+2. Run the following command to download and execute the script:
 
    ```bash
    bash <(curl -s https://raw.githubusercontent.com/felipemacedo1/bash-go-project-structure/main/scripts/create-project.sh)
    ```
 
-3. The script will prompt you to enter the project name and select the desired architecture by number. The selected architecture directory structure will be created in the current directory.
+3. The script will prompt you to enter your desired project name and choose an architecture. Simply enter the project name and select the corresponding number for the architecture.
 
 ## Available Architectures
 
-The script allows you to create project structures for the following architectures:
+You can generate Go project structures for the following architectures:
 
-1. Clean Architecture
-2. Microservices Structure
-3. Hexagonal Structure
-4. MVC Structure
-5. Monolith Structure
-6. CQRS Structure
+1. **Clean Architecture**: Enforces a clear separation between domain, use cases, and infrastructure.
+2. **Microservices Structure**: For modular systems that run independently and communicate via APIs.
+3. **Hexagonal Structure**: Focuses on decoupling the core business logic from external dependencies.
+4. **MVC Structure**: Follows the classic Model-View-Controller pattern.
+5. **Monolith Structure**: A unified architecture where all components are integrated.
+6. **CQRS Structure**: Segregates read and write operations into distinct models.
 
 ## Directory Structure Created
 
-Depending on the selected architecture, the script will create a directory structure that includes some or all of the following:
+The script will generate a directory structure tailored to the selected architecture, including (but not limited to) the following directories:
 
-- cmd/
-- internal/
-- pkg/
-- api/
-- migrations/
-- scripts/
+- **cmd/**: The entry point for your application.
+- **internal/**: For your core business logic and modules.
+- **pkg/**: Contains shared packages that can be used by other projects.
+- **api/**: Houses API-related files.
+- **migrations/**: For managing database migrations.
+- **scripts/**: Utility scripts for Docker, Makefile, etc.
 
 ## Example
 
-If you want to create a project called `my-go-app`, follow the instructions:
+To create a new Go project called `my-go-app`:
 
-1. Run the script:
+1. Run the script using:
    ```bash
    bash <(curl -s https://raw.githubusercontent.com/felipemacedo1/bash-go-project-structure/main/scripts/create-project.sh)
    ```
 
-2. Enter `my-go-app` as the project name when prompted.
+2. Enter `my-go-app` when prompted for the project name.
 
-3. Select the desired architecture by entering the corresponding number.
+3. Select your desired architecture from the list.
 
-This will create the directory structure inside a folder named `my-go-app`.
+The directory structure will be created in a folder named `my-go-app`.
 
-## Additional Information
+## Customization and Contribution
 
-Feel free to customize the script or the generated structure to fit your project's needs. If you encounter any issues or have suggestions, please open an issue or contribute to the repository.
+Feel free to modify the script or the generated structure according to your project's specific needs. Contributions, suggestions, or bug reports are welcome—open an issue or submit a pull request to contribute.
+
+---
+
