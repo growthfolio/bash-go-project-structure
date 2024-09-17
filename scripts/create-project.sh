@@ -2,19 +2,28 @@
 
 # Function to create common files
 create_common_files() {
+    mkdir -p $PROJECT_NAME/cmd/$PROJECT_NAME || { echo "Failed to create cmd directory"; exit 1; }
     touch $PROJECT_NAME/.env
     touch $PROJECT_NAME/go.mod
     touch $PROJECT_NAME/go.sum
-    touch $PROJECT_NAME/cmd/$PROJECT_NAME/main.go
     mkdir -p $PROJECT_NAME/scripts
     touch $PROJECT_NAME/scripts/Dockerfile
     touch $PROJECT_NAME/scripts/Makefile
+
+    # Add basic content to main.go
+    echo 'package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello, World!")
+}' > $PROJECT_NAME/cmd/$PROJECT_NAME/main.go
+
     echo "Common files created."
 }
 
 # Function to create monolithic structure
 create_monolith_structure() {
-    mkdir -p $PROJECT_NAME/cmd/$PROJECT_NAME
     mkdir -p $PROJECT_NAME/internal/app
     mkdir -p $PROJECT_NAME/internal/config
     mkdir -p $PROJECT_NAME/pkg/utils
@@ -26,7 +35,6 @@ create_monolith_structure() {
 
 # Function to create MVC structure
 create_mvc_structure() {
-    mkdir -p $PROJECT_NAME/cmd/$PROJECT_NAME
     mkdir -p $PROJECT_NAME/internal/models
     mkdir -p $PROJECT_NAME/internal/controllers
     mkdir -p $PROJECT_NAME/internal/views
@@ -37,7 +45,6 @@ create_mvc_structure() {
 
 # Function to create Hexagonal structure
 create_hexagonal_structure() {
-    mkdir -p $PROJECT_NAME/cmd/$PROJECT_NAME
     mkdir -p $PROJECT_NAME/internal/domain
     mkdir -p $PROJECT_NAME/internal/adapters/db
     mkdir -p $PROJECT_NAME/internal/adapters/logger
@@ -50,7 +57,6 @@ create_hexagonal_structure() {
 
 # Function to create Clean Architecture structure
 create_clean_structure() {
-    mkdir -p $PROJECT_NAME/cmd/$PROJECT_NAME
     mkdir -p $PROJECT_NAME/internal/entities
     mkdir -p $PROJECT_NAME/internal/usecases
     mkdir -p $PROJECT_NAME/internal/interfaces
@@ -64,7 +70,6 @@ create_clean_structure() {
 
 # Function to create Microservices structure
 create_microservices_structure() {
-    mkdir -p $PROJECT_NAME/services/$PROJECT_NAME/cmd/$PROJECT_NAME
     mkdir -p $PROJECT_NAME/services/$PROJECT_NAME/internal/app
     mkdir -p $PROJECT_NAME/services/$PROJECT_NAME/internal/config
     mkdir -p $PROJECT_NAME/services/$PROJECT_NAME/pkg/utils
@@ -76,7 +81,6 @@ create_microservices_structure() {
 
 # Function to create CQRS structure
 create_cqrs_structure() {
-    mkdir -p $PROJECT_NAME/cmd/$PROJECT_NAME
     mkdir -p $PROJECT_NAME/internal/command
     mkdir -p $PROJECT_NAME/internal/query
     mkdir -p $PROJECT_NAME/internal/domain
@@ -92,6 +96,21 @@ create_cqrs_structure() {
 
 # Prompt for project name
 read -p "Enter the project name: " PROJECT_NAME
+
+# Validate project name
+if [[ -z "$PROJECT_NAME" || "$PROJECT_NAME" =~ [^a-zA-Z0-9_-] ]]; then
+    echo "Invalid project name. Please use only alphanumeric characters, dashes, or underscores."
+    exit 1
+fi
+
+# Check if the project directory already exists
+if [[ -d "$PROJECT_NAME" ]]; then
+    read -p "The directory '$PROJECT_NAME' already exists. Do you want to overwrite it? (y/n): " OVERWRITE
+    if [[ "$OVERWRITE" != "y" ]]; then
+        echo "Operation canceled."
+        exit 1
+    fi
+fi
 
 # Display architecture menu
 echo "Select the desired architecture:"
@@ -130,5 +149,11 @@ case $ARCHITECTURE_NUMBER in
         exit 1
         ;;
 esac
+
+# Prompt to initialize the Go module
+read -p "Do you want to initialize the Go module now? (y/n): " INIT_GO_MODULE
+if [[ "$INIT_GO_MODULE" == "y" ]]; then
+    cd $PROJECT_NAME && go mod init $PROJECT_NAME
+fi
 
 echo "Project structure for '$PROJECT_NAME' with selected architecture created successfully."
