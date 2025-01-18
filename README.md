@@ -1,60 +1,60 @@
-# Bash Go Project Structure
 
-This repository contains Bash scripts to automate the creation of various Go project structures. You can quickly generate project structures like Clean Architecture, MVC, Monolith, Hexagonal, Microservices, and CQRS with ease, ensuring consistency and reducing the manual effort involved in setup.
+# Estrutura de Projetos Go em Bash
 
-## How to Use Directly from the Remote Repository
+Este repositório contém scripts Bash para automatizar a criação de diversas estruturas de projetos Go. Você pode gerar rapidamente estruturas como Clean Architecture, MVC, Monolith, Hexagonal, Microservices e CQRS, garantindo consistência e reduzindo o esforço manual no processo de configuração.
 
-You can execute the script directly from this repository without needing to clone it. Follow these steps:
+## Como Usar Diretamente do Repositório Remoto
 
-1. Open your terminal and navigate to the directory where you want to create your Go project.
-2. Run the following command to download and execute the script:
+Você pode executar o script diretamente deste repositório sem precisar cloná-lo. Siga estes passos:
+
+1. Abra o terminal e navegue até o diretório onde deseja criar seu projeto Go.
+2. Execute o seguinte comando para baixar e executar o script:
 
    ```bash
-   bash <(curl -s https://raw.githubusercontent.com/felipemacedo1/bash-go-project-structure/main/scripts/create-project.sh)
+   bash <(curl -s https://raw.githubusercontent.com/growthfolio/bash-go-project-structure/main/scripts/create-project.sh)
    ```
 
-3. The script will prompt you to enter your desired project name and choose an architecture. Simply enter the project name and select the corresponding number for the architecture.
+3. O script pedirá para você inserir o nome do projeto desejado e escolher uma arquitetura. Insira o nome do projeto e selecione o número correspondente à arquitetura.
 
-## Available Architectures
+## Arquiteturas Disponíveis
 
-You can generate Go project structures for the following architectures:
+Você pode gerar estruturas de projetos Go para as seguintes arquiteturas:
 
-1. **Clean Architecture**: Enforces a clear separation between domain, use cases, and infrastructure.
-2. **Microservices Structure**: For modular systems that run independently and communicate via APIs.
-3. **Hexagonal Structure**: Focuses on decoupling the core business logic from external dependencies.
-4. **MVC Structure**: Follows the classic Model-View-Controller pattern.
-5. **Monolith Structure**: A unified architecture where all components are integrated.
-6. **CQRS Structure**: Segregates read and write operations into distinct models.
+1. **Clean Architecture**: Enfatiza uma separação clara entre domínio, casos de uso e infraestrutura.
+2. **Microservices Structure**: Para sistemas modulares que operam de forma independente e se comunicam via APIs.
+3. **Hexagonal Structure**: Foca no desacoplamento da lógica central de negócios das dependências externas.
+4. **MVC Structure**: Segue o padrão clássico de Model-View-Controller.
+5. **Monolith Structure**: Uma arquitetura unificada onde todos os componentes estão integrados.
+6. **CQRS Structure**: Separa operações de leitura e escrita em modelos distintos.
 
-## Directory Structure Created
+## Estrutura de Diretórios Criada
 
-The script will generate a directory structure tailored to the selected architecture, including (but not limited to) the following directories:
+O script gerará uma estrutura de diretórios personalizada para a arquitetura selecionada, incluindo (mas não se limitando a) os seguintes diretórios:
 
-- **cmd/**: The entry point for your application.
-- **internal/**: For your core business logic and modules.
-- **pkg/**: Contains shared packages that can be used by other projects.
-- **api/**: Houses API-related files.
-- **migrations/**: For managing database migrations.
-- **scripts/**: Utility scripts for Docker, Makefile, etc.
+- **cmd/**: O ponto de entrada para sua aplicação.
+- **internal/**: Para a lógica de negócios principal e módulos.
+- **pkg/**: Contém pacotes compartilhados que podem ser usados por outros projetos.
+- **api/**: Armazena arquivos relacionados à API.
+- **migrations/**: Para gerenciamento de migrações de banco de dados.
+- **scripts/**: Scripts utilitários para Docker, Makefile, etc.
 
-## Example
+## Exemplo
 
-To create a new Go project called `my-go-app`:
+Para criar um novo projeto Go chamado `meu-app-go`:
 
-1. Run the script using:
+1. Execute o script usando:
    ```bash
-   bash <(curl -s https://raw.githubusercontent.com/felipemacedo1/bash-go-project-structure/main/scripts/create-project.sh)
+   bash <(curl -s https://raw.githubusercontent.com/growthfolio/bash-go-project-structure/main/scripts/create-project.sh)
    ```
 
-2. Enter `my-go-app` when prompted for the project name.
+2. Insira `meu-app-go` quando solicitado o nome do projeto.
 
-3. Select your desired architecture from the list.
+3. Escolha a arquitetura desejada na lista.
 
-The directory structure will be created in a folder named `my-go-app`.
+A estrutura de diretórios será criada em uma pasta chamada `meu-app-go`.
 
-## Customization and Contribution
+## Personalização e Contribuição
 
-Feel free to modify the script or the generated structure according to your project's specific needs. Contributions, suggestions, or bug reports are welcome—open an issue or submit a pull request to contribute.
+Sinta-se à vontade para modificar o script ou a estrutura gerada de acordo com as necessidades específicas do seu projeto. Contribuições, sugestões ou relatórios de bugs são bem-vindos—abra uma issue ou envie um pull request para contribuir.
 
 ---
-
